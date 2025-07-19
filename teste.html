@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Seu Pedido de Hamburguer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .container {
+            max-width: 800px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .section-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            color: #1f2937; /* text-gray-900 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .option-label:hover {
+            background-color: #f9fafb; /* hover:bg-gray-50 */
+            border-color: #9ca3af; /* hover:border-gray-400 */
+        }
+        .option-label input[type="radio"]:checked + span {
+            font-weight: 600; /* font-semibold */
+            color: #10b981; /* text-emerald-500 */
+        }
+        .option-label input[type="radio"]:checked {
+            accent-color: #10b981; /* Custom accent color for radio button */
+        }
+        .button-primary {
+            background-color: #10b981; /* Emerald-500 */
+            color: #ffffff;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3), 0 2px 4px -1px rgba(16, 185, 129, 0.15);
+        }
+        .button-primary:hover {
+            background-color: #059669; /* Emerald-600 */
+        }
+        .button-secondary {
+            background-color: #e5e7eb; /* Gray-200 */
+            color: #1f2937; /* Gray-900 */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .button-secondary:hover {
+            background-color: #d1d5db; /* Gray-300 */
+        }
+        /* The whatsapp-link-box is no longer needed for display, but keeping the style in case of future use */
+        .whatsapp-link-box {
+            background-color: #ecfdf5; /* Emerald-50 */
+            border: 1px solid #a7f3d0; /* Emerald-200 */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem; /* p-4 */
+            word-break: break-all; /* Ensures long links wrap */
+            font-size: 0.875rem; /* text-sm */
+            color: #065f46; /* Emerald-800 */
+            margin-top: 1.5rem; /* mt-6 */
+        }
+        .message-box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .message-box button {
+            background-color: #10b981;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6">
+    <div class="container mx-auto p-4 md:p-8 bg-white rounded-xl shadow-lg w-full">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-8">🍔 Monte Seu Pedido! 🥤</h1>
+
+        <!-- Seção de Hamburgueres -->
+        <div class="card">
+            <h2 class="section-title">Escolha seu Hamburguer</h2>
+            <div class="space-y-3">
+                <label class="option-label">
+                    <input type="radio" name="burger" value="Classic Cheeseburger" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🍔 Classic Cheeseburger (Carne, Queijo, Picles, Cebola, Molho Especial)</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="burger" value="Double Bacon Burger" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🥓 Double Bacon Burger (Duas Carnes, Bacon Crocante, Queijo Cheddar, Cebola Caramelizada)</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="burger" value="Veggie Delight Burger" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🌱 Veggie Delight Burger (Hamburguer de Grão de Bico, Alface, Tomate, Maionese Vegana)</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="burger" value="Chicken Crispy Burger" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🍗 Chicken Crispy Burger (Filé de Frango Crocante, Alface Americana, Molho Ranch)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Seção de Bebidas -->
+        <div class="card">
+            <h2 class="section-title">Escolha sua Bebida</h2>
+            <div class="space-y-3">
+                <label class="option-label">
+                    <input type="radio" name="drink" value="Coca-Cola 2L" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🥤 Coca-Cola 2L</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="drink" value="Guaraná Antarctica 2L" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🥤 Guaraná Antarctica 2L</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="drink" value="Água Mineral 500ml" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">💧 Água Mineral 500ml</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="drink" value="Suco Natural de Laranja 500ml" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">🍊 Suco Natural de Laranja 500ml</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Seção de Pagamento -->
+        <div class="card">
+            <h2 class="section-title">Forma de Pagamento</h2>
+            <div class="space-y-3">
+                <label class="option-label">
+                    <input type="radio" name="payment" value="Pix" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">💳 Pix</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="payment" value="Dinheiro" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">💵 Dinheiro (Troco para...)</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="payment" value="Cartão de Crédito/Débito" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">💳 Cartão de Crédito/Débito</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 mt-8">
+            <button id="orderOnWhatsappBtn" class="button-primary">Pedir no WhatsApp</button>
+            <button id="copyLinkBtn" class="button-secondary hidden">Copiar Link</button>
+        </div>
+
+        <!-- Área de Exibição do Link - REMOVIDA PARA EXIBIÇÃO DIRETA NO WHATSAPP -->
+        <!-- <div id="linkOutput" class="whatsapp-link-box hidden">
+            <p class="font-semibold mb-2">Seu link de pedido:</p>
+            <a id="whatsappLink" href="#" target="_blank" class="text-blue-600 hover:underline"></a>
+        </div> -->
+    </div>
+
+    <!-- Message Box for alerts -->
+    <div id="messageBox" class="message-box">
+        <p id="messageText"></p>
+        <button onclick="document.getElementById('messageBox').style.display = 'none'">OK</button>
+    </div>
+
+    <script>
+        // Function to display custom messages
+        function showMessage(message) {
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            messageText.textContent = message;
+            messageBox.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderOnWhatsappBtn = document.getElementById('orderOnWhatsappBtn');
+            const copyLinkBtn = document.getElementById('copyLinkBtn');
+
+            const phoneNumber = '5511977923128'; // Seu número de telefone WhatsApp
+            let whatsappLink = ''; // Variável para armazenar o link gerado
+
+            // Function to generate the WhatsApp link
+            function generateWhatsAppLink() {
+                const selectedBurger = document.querySelector('input[name="burger"]:checked');
+                const selectedDrink = document.querySelector('input[name="drink"]:checked');
+                const selectedPayment = document.querySelector('input[name="payment"]:checked');
+
+                if (!selectedBurger) {
+                    showMessage('Por favor, selecione um hambúrguer.');
+                    return null; // Return null if validation fails
+                }
+                if (!selectedDrink) {
+                    showMessage('Por favor, selecione uma bebida.');
+                    return null;
+                }
+                if (!selectedPayment) {
+                    showMessage('Por favor, selecione uma forma de pagamento.');
+                    return null;
+                }
+
+                const burgerText = selectedBurger.value;
+                const drinkText = selectedDrink.value;
+                const paymentText = selectedPayment.value;
+
+                // Construct the message for WhatsApp
+                let message = `Olá, gostaria de fazer um pedido:%0A`;
+                message += `🍔 1 ${burgerText}%0A`;
+                message += `🥤 1 ${drinkText}%0A`;
+                message += `%0A`; // New line for separation
+                message += `📍 Endereço para entrega: [Seu Endereço AQUI]%0A`;
+                message += `💳 Forma de pagamento: ${paymentText}`;
+
+                // If payment is cash, add a prompt for change
+                if (paymentText === 'Dinheiro') {
+                    message += ` (Preciso de troco para: [Valor do Troco AQUI])`;
+                }
+
+                const encodedMessage = encodeURIComponent(message);
+                return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            }
+
+            // Event listener for the "Pedir no WhatsApp" button
+            orderOnWhatsappBtn.addEventListener('click', () => {
+                whatsappLink = generateWhatsAppLink(); // Generate the link and store it
+                if (whatsappLink) { // Only proceed if a link was successfully generated
+                    window.open(whatsappLink, '_blank');
+                    copyLinkBtn.classList.remove('hidden'); // Show the copy button after successful generation
+                }
+            });
+
+            // Event listener for the "Copiar Link" button
+            copyLinkBtn.addEventListener('click', () => {
+                if (whatsappLink) { // Check if a link has been generated
+                    // Use document.execCommand for better compatibility in iframes
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = whatsappLink;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    try {
+                        document.execCommand('copy');
+                        showMessage('Link copiado para a área de transferência!');
+                    } catch (err) {
+                        showMessage('Erro ao copiar o link. Por favor, copie manualmente: ' + whatsappLink);
+                    }
+                    document.body.removeChild(tempInput);
+                } else {
+                    showMessage('Não há link para copiar. Por favor, clique em "Pedir no WhatsApp" primeiro para gerar o pedido.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
