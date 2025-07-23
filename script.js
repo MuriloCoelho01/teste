@@ -43,7 +43,8 @@ function showMessage(message) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const orderBtn = document.getElementById('orderOnWhatsappBtn');
-    const phoneNumber = '5511977923128';
+    const phoneNumber =  '5511977923128';
+    console.log(phoneNumber)
 
     orderBtn.addEventListener('click', () => {
         const selectedBurger = document.querySelector('input[name="burger"]:checked');
