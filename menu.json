@@ -30,6 +30,7 @@
         "description": "Calabresa, pão",
         "emoji": "🍣"
     }
+ 
   ],
   "drinks": [
     {
@@ -51,6 +52,16 @@
       "id": "suco",
       "name": "Suco Natural de Laranja 500ml",
       "emoji": "🍊"
+    },
+     {
+      "id": "teste",
+      "name": "Coca-teste 2L",
+      "emoji": "✅"
+    },
+    {
+      "id": "teste2",
+      "name": "Coca-teste 3L",
+      "emoji": "✅"
     }
   ],
   "payments": [
