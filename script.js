@@ -43,7 +43,7 @@ function showMessage(message) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const orderBtn = document.getElementById('orderOnWhatsappBtn');
-    const phoneNumber = '5511999999999'; // Coloque seu número com DDI+DDD, só números
+    const phoneNumber = '5511977923128';
 
     orderBtn.addEventListener('click', () => {
         const selectedBurger = document.querySelector('input[name="burger"]:checked');
