@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+}

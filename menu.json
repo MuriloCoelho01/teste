@@ -1,0 +1,74 @@
+{
+  "burgers": [
+    {
+      "id": "classic",
+      "name": "Classic Cheeseburger",
+      "description": "Carne, Queijo, Picles, Cebola, Molho Especial",
+      "emoji": "🍔"
+    },
+    {
+      "id": "double-bacon",
+      "name": "Double Bacon Burger",
+      "description": "Duas Carnes, Bacon Crocante, Queijo Cheddar, Cebola Caramelizada",
+      "emoji": "🥓"
+    },
+    {
+      "id": "veggie",
+      "name": "Veggie Delight Burger",
+      "description": "Hamburguer de Grão de Bico, Alface, Tomate, Maionese Vegana",
+      "emoji": "🌱"
+    },
+    {
+      "id": "chicken",
+      "name": "Chicken Crispy Burger",
+      "description": "Filé de Frango Crocante, Alface Americana, Molho Ranch",
+      "emoji": "🍗"
+    },
+    {
+        "id":"Calabresa",
+        "name":"X calavres",
+        "description": "Calabresa, pão",
+        "emoji": "🍣"
+    }
+  ],
+  "drinks": [
+    {
+      "id": "coca",
+      "name": "Coca-Cola 2L",
+      "emoji": "🥤"
+    },
+    {
+      "id": "guarana",
+      "name": "Guaraná Antarctica 2L",
+      "emoji": "🥤"
+    },
+    {
+      "id": "agua",
+      "name": "Água Mineral 500ml",
+      "emoji": "💧"
+    },
+    {
+      "id": "suco",
+      "name": "Suco Natural de Laranja 500ml",
+      "emoji": "🍊"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pix",
+      "name": "Pix",
+      "emoji": "💳"
+    },
+    {
+      "id": "dinheiro",
+      "name": "Dinheiro (Troco para...)",
+      "emoji": "💵",
+      "troco": true
+    },
+    {
+      "id": "cartao",
+      "name": "Cartão de Crédito/Débito",
+      "emoji": "💳"
+    }
+  ]
+}
